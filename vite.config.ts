@@ -4,16 +4,22 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  base: '/scene-vision-quest/',
-  server: {
-    host: "::",
-    port: 8080,
-  },
-  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
+export default defineConfig(({ mode }) => {
+  // Allow overriding base via env for different hosts (Vercel vs GitHub Pages)
+  const envBase = process.env.VITE_BASE;
+  const base = envBase ?? (mode === "development" ? "/" : "/");
+
+  return {
+    base,
+    server: {
+      host: "::",
+      port: 8080,
     },
-  },
-}));
+    plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "./src"),
+      },
+    },
+  };
+});
