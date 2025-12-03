@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import TeamSection from "@/components/TeamSection";
 import OverviewSection from "@/components/OverviewSection";
 import DatasetSection from "@/components/DatasetSection";
+import EDASection from "@/components/EDASection";
 import ResultsSection from "@/components/ResultsSection";
 import AnalysisSection from "@/components/AnalysisSection";
 
@@ -14,6 +15,7 @@ const Index = () => {
       <TeamSection />
       <OverviewSection />
       <DatasetSection />
+      <EDASection />
       <ResultsSection />
       <AnalysisSection />
       <footer className="bg-muted/30 py-12 text-center">
